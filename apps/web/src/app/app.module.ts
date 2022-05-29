@@ -2,6 +2,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 import { TabMenuModule } from 'primeng/tabmenu';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +21,8 @@ import { ListaArtigosComponent } from './components/lista-artigos/lista-artigos.
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ButtonModule,
+    CardModule,
     TabMenuModule,
   ],
   providers: [],
