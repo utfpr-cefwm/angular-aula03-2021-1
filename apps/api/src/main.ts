@@ -7,6 +7,8 @@ import * as express from 'express';
 
 import { MongoClient } from 'mongodb';
 
+import { router as artigosRoute } from './app/routes/artigos';
+
 MongoClient.connect(
   'mongodb://angular-aula03-2021-1_devcontainer_db_1:27017',
 ).then((client: MongoClient) => {
@@ -21,6 +23,8 @@ const app = express();
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
 });
+
+app.use('/api/artigos', artigosRoute);
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
