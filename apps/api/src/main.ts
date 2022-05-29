@@ -5,6 +5,17 @@
 
 import * as express from 'express';
 
+import { MongoClient } from 'mongodb';
+
+MongoClient.connect(
+  'mongodb://angular-aula03-2021-1_devcontainer_db_1:27017',
+).then((client: MongoClient) => {
+  app.locals.db = client.db('app-artigos');
+  console.log('    Conectado ao MongoDB.');
+}).catch(err => {
+  console.error('    Erro ao conectar ao MongoDB', err);
+});
+
 const app = express();
 
 app.get('/api', (req, res) => {
