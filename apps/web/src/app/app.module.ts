@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,6 +17,7 @@ import { ListaArtigosComponent } from './components/lista-artigos/lista-artigos.
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     TabMenuModule,
   ],
