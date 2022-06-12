@@ -43,19 +43,9 @@ export class ArtigoEdicaoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      console.log('O título é:', this.titulo.value);
-      this.formGroup.setValue({
-        titulo: 'Temporizador acionado, ...',
-        descricao: '...portanto as strings...',
-        urlImagem: '...foram...',
-        urlArtigo: '...alteradas.',
-      });
-    }, 5000);
   }
 
   public enviarForm(json: unknown) {
-    console.log('Bora enviar', json);
   }
 
 }
