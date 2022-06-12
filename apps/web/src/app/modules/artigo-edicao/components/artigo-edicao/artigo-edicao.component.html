@@ -1,4 +1,8 @@
-<div class="card">
+<form
+  (ngSubmit)="enviarForm(formGroup.value)"
+  [formGroup]="formGroup"
+  class="card"
+>
   <h5>Editar artigo</h5>
 
   <div class="field">
@@ -9,7 +13,7 @@
     </label>
     <input
       pInputText
-      [formControl]="titulo"
+      formControlName="titulo"
       autofocus
       id="titulo"
       type="text"
@@ -29,7 +33,7 @@
     </label>
     <input
       pInputText
-      [formControl]="descricao"
+      formControlName="descricao"
       id="descricao"
       type="text"
       placeholder="Ex.: lista de blogs com temática pet, com fotos de bichinhos"
@@ -48,7 +52,7 @@
     </label>
     <input
       pInputText
-      [formControl]="urlImagem"
+      formControlName="urlImagem"
       id="url-imagem"
       type="text"
       placeholder="Ex.: http://gatinhosfofis.net/gatinho2.jpg"
@@ -67,7 +71,7 @@
     </label>
     <input
       pInputText
-      [formControl]="urlArtigo"
+      formControlName="urlArtigo"
       id="url-artigo"
       type="text"
       placeholder="Ex.: http://gatinhosfofis.net/artigos/2020/5/12.html"
@@ -82,10 +86,9 @@
     pButton
     icon="pi pi-save"
     label="Salvar"
-    type="button"
+    type="submit"
     [disabled]="formGroup.invalid"
-    (click)="enviarForm(formGroup.value)"
   >
   </button>
 
-</div>
+</form>
