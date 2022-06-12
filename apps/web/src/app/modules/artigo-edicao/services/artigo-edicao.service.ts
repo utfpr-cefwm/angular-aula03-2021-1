@@ -23,4 +23,11 @@ export class ArtigoEdicaoService {
     );
   }
 
+  public put(artigo: IArtigo): Observable<string> {
+    return this.httpClient.put<string>(
+      `/api/artigos/${artigo._id}`,
+      artigo,
+    );
+  }
+
 }

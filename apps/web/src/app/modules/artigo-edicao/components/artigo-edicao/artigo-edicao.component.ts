@@ -44,10 +44,11 @@ export class ArtigoEdicaoComponent implements OnInit, OnDestroy {
     Validators.required,
   );
   public formGroup: FormGroup = new FormGroup({
+    _id: new FormControl(null),
     titulo: this.titulo,
     descricao: this.descricao,
-    urlImagem: this.urlImagem,
-    urlArtigo: this.urlArtigo,
+    imagem: this.urlImagem,
+    url: this.urlArtigo,
   });
 
   private subDestruction: Subject<void> = new Subject();
@@ -69,12 +70,7 @@ export class ArtigoEdicaoComponent implements OnInit, OnDestroy {
       this.artigoEdicaoService.get(id).pipe(
         takeUntil(this.subDestruction),
       ).subscribe((a: IArtigo) => {
-        this.formGroup.setValue({
-          titulo: a.titulo,
-          descricao: a.descricao,
-          urlImagem: a.imagem,
-          urlArtigo: a.url,
-        });
+        this.formGroup.setValue(a);
       });
     });
   }
@@ -84,7 +80,9 @@ export class ArtigoEdicaoComponent implements OnInit, OnDestroy {
     this.subDestruction.complete();
   }
 
-  public enviarForm(json: unknown) {
+  public enviarForm(json: IArtigo) {
+    this.artigoEdicaoService.put(json).subscribe(
+    );
   }
 
 }
