@@ -1,5 +1,6 @@
 import {
   Component,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import {
@@ -7,13 +8,24 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+
+import {
+  map,
+  takeUntil,
+} from 'rxjs/operators';
+
+import { Artigo as IArtigo } from '@cefwm-angular/common';
+
+import { ArtigoEdicaoService } from '../../services/artigo-edicao.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'cefwm-angular-artigo-edicao',
   templateUrl: './artigo-edicao.component.html',
   styleUrls: ['./artigo-edicao.component.css'],
 })
-export class ArtigoEdicaoComponent implements OnInit {
+export class ArtigoEdicaoComponent implements OnInit, OnDestroy {
 
   public titulo: FormControl = new FormControl(
     '',
@@ -38,11 +50,38 @@ export class ArtigoEdicaoComponent implements OnInit {
     urlArtigo: this.urlArtigo,
   });
 
+  private subDestruction: Subject<void> = new Subject();
+
   constructor(
+    private activatedRoute: ActivatedRoute,
+    private artigoEdicaoService: ArtigoEdicaoService,
   ) {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.pipe(
+      map((params: Params) => {
+        const artigoId: number = +params['id-artigo'];
+        return artigoId;
+      }),
+      takeUntil(this.subDestruction),
+    ).subscribe((id: number) => {
+      this.artigoEdicaoService.get(id).pipe(
+        takeUntil(this.subDestruction),
+      ).subscribe((a: IArtigo) => {
+        this.formGroup.setValue({
+          titulo: a.titulo,
+          descricao: a.descricao,
+          urlImagem: a.imagem,
+          urlArtigo: a.url,
+        });
+      });
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subDestruction.next();
+    this.subDestruction.complete();
   }
 
   public enviarForm(json: unknown) {
