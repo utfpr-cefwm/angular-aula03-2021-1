@@ -19,7 +19,7 @@ export class ArtigoEdicaoService {
 
   public get(id: number): Observable<IArtigo> {
     return this.httpClient.get<IArtigo>(
-      `http://localhost:3333/api/artigos/${id}`,
+      `/api/artigos/${id}`,
     );
   }
 

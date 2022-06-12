@@ -17,7 +17,7 @@ export class ArtigoService {
 
   public getAll(): Observable<IArtigo[]> {
     return this.httpClient.get<IArtigo[]>(
-      'http://localhost:3333/api/artigos',
+      '/api/artigos',
     ).pipe(
     );
   }
