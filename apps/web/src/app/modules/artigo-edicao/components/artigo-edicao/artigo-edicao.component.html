@@ -78,4 +78,14 @@
     </small>
   </div>
 
+  <button
+    pButton
+    icon="pi pi-save"
+    label="Salvar"
+    type="button"
+    [disabled]="formGroup.invalid"
+    (click)="enviarForm(formGroup.value)"
+  >
+  </button>
+
 </div>

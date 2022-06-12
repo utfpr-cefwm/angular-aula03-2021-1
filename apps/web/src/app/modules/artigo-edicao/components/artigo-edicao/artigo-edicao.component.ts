@@ -54,4 +54,8 @@ export class ArtigoEdicaoComponent implements OnInit {
     }, 5000);
   }
 
+  public enviarForm(json: unknown) {
+    console.log('Bora enviar', json);
+  }
+
 }
