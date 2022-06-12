@@ -4,6 +4,8 @@ import {
   Injectable,
   NgZone,
 } from "@angular/core";
+import { Router } from "@angular/router";
+
 import { MessageService } from "primeng/api";
 
 @Injectable()
@@ -11,6 +13,7 @@ export class AppErrorHandler extends ErrorHandler {
 
   constructor(
     private ngZone: NgZone,
+    private router: Router,
     private messageService: MessageService,
   ) {
     super();
@@ -25,6 +28,15 @@ export class AppErrorHandler extends ErrorHandler {
 
   private handleHttpErrorResponse(error: HttpErrorResponse) {
     this.ngZone.run(() => {
+      if (error.status === 401) {
+        this.router.navigate(['/login']);
+        this.messageService.add({
+          severity: 'error',
+          summary: `Erro`,
+          detail: `Você precisa fazer login para acessar esse recurso`,
+        });
+        return;
+      }
       this.messageService.add({
         severity: 'error',
         summary: `Erro de servidor: [${error.status}] ${error.statusText}`,
