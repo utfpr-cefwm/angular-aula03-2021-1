@@ -9,6 +9,7 @@
     </label>
     <input
       pInputText
+      [formControl]="titulo"
       autofocus
       id="titulo"
       type="text"
@@ -28,6 +29,7 @@
     </label>
     <input
       pInputText
+      [formControl]="descricao"
       id="descricao"
       type="text"
       placeholder="Ex.: lista de blogs com temática pet, com fotos de bichinhos"
@@ -46,6 +48,7 @@
     </label>
     <input
       pInputText
+      [formControl]="urlImagem"
       id="url-imagem"
       type="text"
       placeholder="Ex.: http://gatinhosfofis.net/gatinho2.jpg"
@@ -64,6 +67,7 @@
     </label>
     <input
       pInputText
+      [formControl]="urlArtigo"
       id="url-artigo"
       type="text"
       placeholder="Ex.: http://gatinhosfofis.net/artigos/2020/5/12.html"
