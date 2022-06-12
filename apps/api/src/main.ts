@@ -11,6 +11,7 @@ import * as cors from 'cors';
 
 import { json } from 'body-parser';
 
+import { router as authRoute } from './app/routes/auth';
 import { router as artigosRoute } from './app/routes/artigos';
 
 MongoClient.connect(
@@ -31,6 +32,8 @@ app.use(json());
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
 });
+
+app.use('/api/auth', authRoute);
 
 app.use('/api/artigos', artigosRoute);
 
