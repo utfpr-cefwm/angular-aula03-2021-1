@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListaArtigosComponent } from './components/lista-artigos/lista-artigos.component';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ListaArtigosComponent } from './components/lista-artigos/lista-artigos.
     TabMenuModule,
     MessageModule,
     ToastModule,
+    AuthModule,
   ],
   providers: [
     MessageService,
