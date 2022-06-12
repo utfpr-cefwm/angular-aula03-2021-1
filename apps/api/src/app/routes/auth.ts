@@ -12,7 +12,7 @@ import {
 } from '@cefwm-angular/common';
 import { getCollection } from "../util/mongodb";
 
-const JWT_SECRET_KEY = 'Ch4v3_sEcR3t4';
+export const JWT_SECRET_KEY = 'Ch4v3_sEcR3t4';
 
 export const router: Router = Router();
 
