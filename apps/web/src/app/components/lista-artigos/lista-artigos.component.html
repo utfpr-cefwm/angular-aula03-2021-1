@@ -16,5 +16,22 @@
         src="{{ artigo.imagem }}"
       />
     </ng-template>
+    <ng-template pTemplate="footer">
+      <a
+        pButton
+        label="Acessar"
+        class="p-button-outlined p-button-secondary"
+        icon="pi pi-eye"
+      >
+      </a>
+      <button
+        pButton
+        (click)="editar(artigo, $event)"
+        label="Editar"
+        class="p-button-primary"
+        icon="pi pi-pencil"
+      >
+      </button>
+    </ng-template>
   </p-card>
 </a>

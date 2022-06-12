@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import { Artigo as IArtigo } from '@cefwm-angular/common';
 
@@ -20,9 +19,6 @@ export class ArtigoService {
     return this.httpClient.get<IArtigo[]>(
       'http://localhost:3333/api/artigos',
     ).pipe(
-      tap(xyz => {
-        console.log(xyz);
-      }),
     );
   }
 
